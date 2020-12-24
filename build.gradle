@@ -1,0 +1,53 @@
+allprojects {
+    apply plugin: 'java'
+    // 设置文件编码格式
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+    // 定义全局变量
+    ext {
+        springBootVersion = "1.5.2.RELEASE"
+        websocketVersion = "1.5.2.RELEASE"
+        netflixVersion = "1.3.0.RELEASE"
+        securityVersion = "1.2.0.RELEASE"
+        reactorVersion = "3.0.6.RELEASE"
+        fastJsonVersion = "1.2.35"
+        druidVersion = "1.0.26"
+        httpclientVersion = "4.5.3"
+        poiVersion = "4.0.1"
+        sessionRedisVersion = "1.3.0.RELEASE"
+    }
+
+    processResources {
+        exclude '*.sample'
+        exclude '*.yml'
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    // 编译环境依赖
+    buildscript {
+        repositories {
+            maven { url "https://repo1.maven.org/maven2/" }
+            maven { url "http://repo.spring.io/libs-snapshot-local" }
+            maven { url "https://plugins.gradle.org/m2/" }
+        }
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+            classpath "net.saliman:gradle-properties-plugin:1.4.6"
+        }
+    }
+    repositories {
+        maven { url "https://repo1.maven.org/maven2/" }
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
+        maven { url 'https://repo.spring.io/release/' }
+        maven { url "http://repo.spring.io/libs-snapshot-local" }
+        maven { url "http://repo.spring.io/libs-milestone-local" }
+        maven { url "http://repo.spring.io/libs-release-local" }
+    }
+}
+
+
+group = 'com.github'
+version = '0.0.1-SNAPSHOT'
+description = "code repo"
