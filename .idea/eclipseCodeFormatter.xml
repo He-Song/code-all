@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EclipseCodeFormatterProjectSettings">
+    <option name="projectSpecificProfile">
+      <ProjectSpecificProfile>
+        <option name="enableJSFormatting" value="true" />
+        <option name="formatter" value="ECLIPSE" />
+        <option name="pathToConfigFileJS" value="D:/WorkFiles/Common/formatter/uxsino-formatter-js.xml" />
+        <option name="pathToConfigFileJava" value="D:/WorkFiles/Common/formatter/uxsino_formatter-java.xml" />
+        <option name="selectedJavaProfile" value="uxsino_formatter" />
+        <option name="selectedJavaScriptProfile" value="uxsino-formatter-js" />
+      </ProjectSpecificProfile>
+    </option>
+  </component>
+</project>
