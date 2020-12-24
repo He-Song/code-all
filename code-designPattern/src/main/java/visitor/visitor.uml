@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="0.0" y="246.0">visitor.ConcreteVisitor</node>
+    <node x="232.0" y="246.0">visitor.Employees</node>
+    <node x="94.81217948717946" y="0.0">visitor.Visitor</node>
+    <node x="65.27499999999998" y="82.0">visitor.Element</node>
+    <node x="176.69679487179485" y="164.0">visitor.Employee</node>
+    <node x="175.32179487179485" y="328.0">visitor.MainTest</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="visitor.ConcreteVisitor" target="visitor.Employee">
+      <point x="70.33333333333331" y="-16.0" />
+      <point x="175.83333333333331" y="221.0" />
+      <point x="193.44679487179485" y="221.0" />
+      <point x="-50.25" y="16.0" />
+    </edge>
+    <edge source="visitor.Employees" target="visitor.Employee">
+      <point x="0.0" y="-16.0" />
+      <point x="304.5" y="221.0" />
+      <point x="293.94679487179485" y="221.0" />
+      <point x="50.25" y="16.0" />
+    </edge>
+    <edge source="visitor.MainTest" target="visitor.ConcreteVisitor">
+      <point x="-50.25" y="-16.0" />
+      <point x="192.07179487179485" y="303.0" />
+      <point x="105.5" y="303.0" />
+      <point x="0.0" y="16.0" />
+    </edge>
+    <edge source="visitor.Employees" target="visitor.Visitor">
+      <point x="48.33333333333333" y="-16.0" />
+      <point x="352.8333333333333" y="221.0" />
+      <point x="334.29166666666663" y="221.0" />
+      <point x="334.29166666666663" y="52.0" />
+      <point x="205.51217948717948" y="52.0" />
+      <point x="49.20000000000002" y="16.0" />
+    </edge>
+    <edge source="visitor.Visitor" target="visitor.Element">
+      <point x="0.0" y="16.0" />
+      <point x="156.31217948717946" y="62.0" />
+      <point x="157.52499999999998" y="62.0" />
+      <point x="30.75" y="-16.0" />
+    </edge>
+    <edge source="visitor.ConcreteVisitor" target="visitor.Visitor">
+      <point x="-70.33333333333331" y="-16.0" />
+      <point x="35.166666666666686" y="221.0" />
+      <point x="54.77499999999998" y="221.0" />
+      <point x="54.77499999999998" y="52.0" />
+      <point x="107.11217948717945" y="52.0" />
+      <point x="-49.20000000000002" y="16.0" />
+    </edge>
+    <edge source="visitor.Employee" target="visitor.Visitor">
+      <point x="33.49999999999999" y="-16.0" />
+      <point x="277.19679487179485" y="62.0" />
+      <point x="180.91217948717946" y="62.0" />
+      <point x="24.599999999999994" y="16.0" />
+    </edge>
+    <edge source="visitor.MainTest" target="visitor.Employees">
+      <point x="50.25" y="-16.0" />
+      <point x="292.57179487179485" y="303.0" />
+      <point x="340.75" y="303.0" />
+      <point x="36.25" y="16.0" />
+    </edge>
+    <edge source="visitor.ConcreteVisitor" target="visitor.Element">
+      <point x="0.0" y="-16.0" />
+      <point x="105.5" y="221.0" />
+      <point x="96.02499999999998" y="221.0" />
+      <point x="-30.75" y="16.0" />
+    </edge>
+    <edge source="visitor.MainTest" target="visitor.Employee">
+      <point x="-16.75" y="-16.0" />
+      <point x="225.57179487179485" y="303.0" />
+      <point x="221.5" y="303.0" />
+      <point x="221.5" y="221.0" />
+      <point x="226.94679487179485" y="221.0" />
+      <point x="-16.75" y="16.0" />
+    </edge>
+    <edge source="visitor.Employee" target="visitor.Element">
+      <point x="-33.5" y="-16.0" />
+      <point x="210.19679487179485" y="139.0" />
+      <point x="157.52499999999998" y="139.0" />
+      <point x="30.75" y="16.0" />
+    </edge>
+    <edge source="visitor.Element" target="visitor.Visitor">
+      <point x="-30.75" y="-16.0" />
+      <point x="96.02499999999998" y="62.0" />
+      <point x="131.71217948717947" y="62.0" />
+      <point x="-24.599999999999994" y="16.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.1999999999999997" x="632.0" y="187.08333333333337" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

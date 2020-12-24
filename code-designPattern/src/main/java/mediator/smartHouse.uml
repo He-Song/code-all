@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="86.0" y="313.0">mediator.Alarm</node>
+    <node x="0.0" y="313.0">mediator.TV</node>
+    <node x="224.0" y="207.0">mediator.MainTest</node>
+    <node x="36.0" y="0.0">mediator.Mediator</node>
+    <node x="18.25" y="207.0">mediator.Colleague</node>
+    <node x="0.0" y="106.0">mediator.ConcreteMediator</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="mediator.TV" target="mediator.Colleague">
+      <point x="0.0" y="-28.0" />
+      <point x="33.0" y="288.0" />
+      <point x="50.5" y="288.0" />
+      <point x="-32.25" y="28.0" />
+    </edge>
+    <edge source="mediator.Alarm" target="mediator.Colleague">
+      <point x="0.0" y="-28.0" />
+      <point x="132.5" y="288.0" />
+      <point x="115.0" y="288.0" />
+      <point x="32.25" y="28.0" />
+    </edge>
+    <edge source="mediator.ConcreteMediator" target="mediator.Mediator">
+      <point x="0.0" y="-28.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.3000000000000003" x="501.99999999999994" y="248.9230769230769" />
+  <SelectedNodes>
+    <node>mediator.Colleague</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+
