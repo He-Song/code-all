@@ -4,4 +4,5 @@ include ':code-designPattern'
 project(':code-designPattern').projectDir = new File(settingsDir, 'code-designPattern')
 include 'code-practice'
 project(':code-practice').projectDir = new File(settingsDir, 'code-practice')
+include 'code-sparkcore'
 
