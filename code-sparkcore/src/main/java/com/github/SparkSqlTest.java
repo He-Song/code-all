@@ -1,6 +1,8 @@
 package com.github;
 
 import org.apache.spark.sql.DataFrameReader;
+import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
 public class SparkSqlTest {
@@ -26,7 +28,21 @@ public class SparkSqlTest {
 //                .repartition(Integer.valueOf(connectionParam.get("repartitions")))
 //                .persist(getStorageLevel(connectionParam.get("spark_storageLevel")));
 //        dFrameReader.load().show();
+        String viewName = "globalView";
+        Dataset<Row> da = dFrameReader.load();
+        da.show();
+        da.createOrReplaceGlobalTempView(viewName);
+        String str = "G0000000";
+        Long time = System.currentTimeMillis();
+        for (int i = 1; i <= 25; i++) {
+            int index = i;
+            new Thread(() -> {
+                String sql = String.format("select %s from global_temp.%s", str + (index < 10 ? "0" + String.valueOf(index) : index), viewName);
+                Dataset<Row> ds = sparkSession.sql(sql);
+                ds.show();
+            }).start();
+        }
 
-
+        System.out.println(123);
     }
 }
