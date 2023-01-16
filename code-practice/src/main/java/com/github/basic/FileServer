@@ -1,0 +1,136 @@
+package com.sanofi.gateway;
+
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+/**
+ * @Desc:
+ * @Author: song
+ * @Date: 2023/1/14
+ **/
+
+public class FileServer implements Runnable {
+
+    private static final String WORK_FOLDER = "/Users/e0516027/Desktop/test/";
+
+    private static int ipsocket = 0;
+
+    public static void main(String[] args)throws Exception{
+        ipsocket = Integer.parseInt(args[0]);
+        //建议使用3107
+        System.out.println("系统在端口:" + ipsocket + "等待发送");
+        Thread t1 = new Thread(new FileServer());
+        t1.start();
+    }
+
+    public void run(){
+        while(true){
+            try{
+                String[] fileNames = seachFileName(1);
+                if(fileNames == null || fileNames.length < 1) return;
+                for(int i = 0; i < fileNames.length; i ++){
+                    if(fileNames[i].startsWith(".")) continue;
+                    sendFileName(fileNames[i]);
+                    sendFile(fileNames[i]);
+                }
+                Thread.sleep(24 * 60 * 60 * 1000); //24小时
+            }catch(Exception e) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    /*
+    listType = 0 返回含文件夹和文件
+    listType = 1 只返回文件
+    */
+    public static String[] seachFileName(int listType) throws Exception{
+        String directory = WORK_FOLDER;
+        File dir = new File(directory);
+        File dirTemp;
+        String[] filesTemp;
+        String[] fileNames;
+        String[] re;
+        int length = 0;
+        if (!dir.isDirectory())
+            throw new IllegalArgumentException("FileList: no such directory");
+
+        filesTemp = dir.list();
+        java.util.Arrays.sort(filesTemp);
+
+        for (String value : filesTemp) {
+            dirTemp = new File(directory + "\\" + value);
+            if (!dirTemp.isDirectory()) {
+                length++;
+            }
+        }
+        fileNames = new String[length];
+        length = 0;
+        for (String s : filesTemp) {
+            dirTemp = new File(directory + "\\" + s);
+            if (!dirTemp.isDirectory()) {
+                fileNames[length] = s;
+            }
+            length++;
+        }
+        if(listType == 0) re = filesTemp;
+        else re = fileNames;
+        return re;
+
+    }
+
+    /*发文件名
+     */
+    private static void sendFileName(String fileNames) throws Exception{
+        if(fileNames == null) return;
+        //创建网络服务器接受客户请求
+        ServerSocket ss=new ServerSocket(ipsocket);
+        Socket client=ss.accept();
+
+        //创建网络输出流并提供数据包装器
+        OutputStream netOut=client.getOutputStream();
+        OutputStream doc=new DataOutputStream(new BufferedOutputStream(netOut));
+
+        //创建文件读取缓冲区
+        byte[] buf=null;
+        String fileName = fileNames;
+        buf = fileName.getBytes();
+        int num=buf.length;
+        if(num > 0){//是否读完文件
+            doc.write(buf,0,num);//把文件数据写出网络缓冲区
+            doc.flush();//刷新缓冲区把数据写往客户端
+        }
+        doc.close();
+        ss.close();
+    }
+    /*发文件本身
+     */
+    private static void sendFile(String fileName) throws Exception{
+        if(fileName == null) return;
+        //创建文件流用来读取文件中的数据
+        File file=new File(WORK_FOLDER + fileName);
+        FileInputStream fos=new FileInputStream(file);
+
+        //创建网络服务器接受客户请求
+        ServerSocket ss=new ServerSocket(ipsocket + 1);
+        Socket client=ss.accept();
+
+        //创建网络输出流并提供数据包装器
+        OutputStream netOut=client.getOutputStream();
+        OutputStream doc=new DataOutputStream(new BufferedOutputStream(netOut));
+
+        //创建文件读取缓冲区
+        byte[] buf=new byte[2048];
+        int num=fos.read(buf);
+        while(num!=(-1)){//是否读完文件
+            doc.write(buf,0,num);//把文件数据写出网络缓冲区
+            doc.flush();//刷新缓冲区把数据写往客户端
+            num=fos.read(buf);//继续从文件中读取数据
+        }
+        fos.close();
+        doc.close();
+        ss.close();
+
+    }
+}
